@@ -45,7 +45,7 @@ public class ClusterConfigurationInfo extends ArrayList<ClusterConfigurationInfo
 			String value = config.getString(key, null);
 
 			// Mask key values which contain sensitive information
-			if (value != null && key.toLowerCase().contains("password")) {
+			if (value != null && (key.toLowerCase().contains("password") || key.toLowerCase().contains("secret"))){
 				value = "******";
 			}
 

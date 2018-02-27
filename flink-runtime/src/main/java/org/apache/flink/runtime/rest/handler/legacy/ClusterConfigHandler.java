@@ -74,7 +74,7 @@ public class ClusterConfigHandler extends AbstractJsonRequestHandler {
 
 				String value = config.getString(key, null);
 				// Mask key values which contain sensitive information
-				if (value != null && key.toLowerCase().contains("password")) {
+				if (value != null && (key.toLowerCase().contains("password") || key.toLowerCase().contains("secret"))) {
 					value = "******";
 				}
 				gen.writeStringField(ClusterConfigurationInfoEntry.FIELD_NAME_CONFIG_VALUE, value);
